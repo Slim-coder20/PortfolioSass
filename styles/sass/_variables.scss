@@ -6,3 +6,15 @@ $lightgray: #f3efef;
 $dark: #171c28;
 $white: #ffffff;
 $test: #b55a5a;
+
+// création d'un tableau // 
+
+$colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'gray': $gray,
+  'lightgray': $lightgray,
+  'dark': $dark,
+  'white': $white,
+  'accent': $accent
+);

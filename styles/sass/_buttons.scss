@@ -2,6 +2,13 @@
     @return darken($color, 20%); 
 }
 
+@function getFontColor($bgColor){
+    @if(lightness($bgColor) > 50%){
+        @return $dark;
+    } @else {
+        @return $white;
+    }
+}
 
 .btn{
     padding: 15px 30px;
@@ -9,19 +16,32 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
-    font-weight: bold;
+    
     border: 1px solid;
+    transition: all ease 0.3s;
 
     &:hover{
         transform:translateY(-10px);
+        background-color: $primary;
+        color: $white;
+
     }
   
     
 
-    &.btn-primary{
-        background-color: $primary;
-        color: $white;
-        border-color: darkenBorder($primary);
-        
+    @each $name, $color in $colors {
+        &.btn-#{$name} {
+          background-color: $color;
+          border-color: darkenBorder($color); // Ajuste le pourcentage selon le besoin
+          color: getFontColor($color);
+      
+          &:hover {
+            $bg-hover:lighten($color, 10%);
+            background-color:$bg-hover;
+            color: getFontColor($bg-hover);
+          }
+        }
     }
+
+
 }
